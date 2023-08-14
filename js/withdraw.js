@@ -3,6 +3,13 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const newWithdrawAmountString = withdrawField.value;
     const newWithdrawAmount = parseFloat(newWithdrawAmountString);
 
+    withdrawField.value = '';
+
+    if (isNaN(newWithdrawAmount)) {
+        alert('Please Provide a Valid number');
+        return;
+    }
+
     const withdrawTotalElement = document.getElementById('withdraw-total');
     const previousWithdrawTotalString = withdrawTotalElement.innerText;
     const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
@@ -13,7 +20,7 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
 
-    withdrawField.value = '';
+    
 
     if (newWithdrawAmount > previousBalanceTotal) {
         alert('Eto Taka Nai, Gorib Tui');
