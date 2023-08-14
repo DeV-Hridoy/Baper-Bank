@@ -7,16 +7,25 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const previousWithdrawTotalString = withdrawTotalElement.innerText;
     const previousWithdrawTotal = parseFloat(previousWithdrawTotalString);
 
-    const  currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
 
-    withdrawTotalElement.innerText = currentWithdrawTotal;
 
     const balanceTotalElement = document.getElementById('balance-total');
     const previousBalanceTotalString = balanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
 
+    withdrawField.value = '';
+
+    if (newWithdrawAmount > previousBalanceTotal) {
+        alert('Eto Taka Nai, Gorib Tui');
+        return;
+    }
+
+    const  currentWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+
+    withdrawTotalElement.innerText = currentWithdrawTotal;
+
     const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
     balanceTotalElement.innerText = newBalanceTotal;
 
-    withdrawField.value = '';
+  
 })
